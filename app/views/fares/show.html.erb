@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+
+    <!-- Cascading Style Sheets -->
+    <link href="/app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/app/assets/stylesheets/analytics.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href=<%=fares_path %>>Analytics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=<%=employees_path %>>Log Out</a>
+            </li>
+          </ul>
+      </div>
+    </nav>
+    <div class="container-fluid divider"></div>
+
+    <div class="container-fluid py-4"></div>
+    <div class="container-fluid">
+       <!-- <div class="row"> -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                        <%= link_to 'Back', fares_path, {:class => 'btn btn-outline-info table-shadow', :method => :get } %>
+                </div>
+            </div>
+            <!--Grid row-->
+            <!--Top Table UI-->
+            </br>
+                <div class="table-responsive">
+                    <% if @fares then %>
+                        <table id="tblanalytics" class="table table-responsive-md table-shadow" id="analytics-table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <% @fares.first.keys.each do |key| %>
+                                    <th><%= key %></th>
+                                    <% end %>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% @fares.each do |fare| %>
+                                <tr>
+                                    <% fare.each do |key, value| %>
+                                    <td><%= value %></td>
+                                    <% end %>
+                                </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    <% end %>
+                </div>
+        </div>
+    <!-- </div> -->
+<br>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/app/assets/javascripts/popper.min.js"></script>
+    <script src="/app/assets/javascripts/bootstrap.min.js"></script>
+</body>
+</html>
