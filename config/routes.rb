@@ -1,18 +1,12 @@
 Rails.application.routes.draw do
   get 'employees/about'
   get 'employees/contact'
-  get 'employees/login' 
-  post "/employees/login" => "employees#login_employee"
-  
-  get 'fares/show'
-  post "fares" => "fares#view"
-  resources :fares do
-    collection do
-      get :view
-      post :show
-    end
-  end
-  
+  get 'employees/login'
+
+  #post 'fares' => 'fares#index'
+   post 'fares' => 'fares#index'
+   post "/employees/login" => "employees#login_employee"
+
   resources :fares
   resources :trips
   resources :employees
